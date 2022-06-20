@@ -1,0 +1,13 @@
+html{
+  position: relative;
+  min-height: 100px;
+}
+body{
+  font-family: Arial, Helvetica, sans-serif;
+}
+.vavbar-img{
+  width: 3px;
+  height: 4px;
+  float: left;
+  background-size: auto;
+}

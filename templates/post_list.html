@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="container">
+      <div class="row">
+        {% for post in posts %}
+        <div class="col-md-6">
+          <div class="img-thumbnail">
+            <a href="{{ post.get_absolute_url }}"><b>{{post.title|capfirst}}</b></a><small style="float:right">{{post.created}}</small>
+            <br>
+            Author: <b>{{post.author|capfirst}}</b><br>
+            {{post.body|capfirst}}
+
+          </div>
+        </div>
+        {% empty %}
+        <div class="contai-fluid">
+          <h3>No Posts Available with {{ request.GET.q }}</h3>
+
+        </div>
+        {% endfor %}
+      </div>
+      <nav aria-label="Page navigation example">
+          <ul class="pagination">
+            {% if posts.has_previous %}
+            <li class="page-item">
+              <a class="page-link" href="?page={{ posts.previous_page_number }}"> << </a>
+            </li>
+
+            {% endif %}
+            {% for p in posts.paginator.page_range %}
+              {% if posts.number == p %}
+                <li class="page-item active">
+                  <a class="page-link" href="?page={{ p }}">{{ p }}</a>
+                </li>
+              {% else %}
+              <li class="page-item">
+                <a class="page-link" href="?page={{ p }}">{{ p }}</a>
+              </li>
+              {% endif %}
+
+
+            {% endfor %}
+            {% if posts.has_next %}
+            <li class="page-item">
+              <a class="page-link" href="?page={{ posts.next_page_number }}"> >> </a>
+            </li>
+
+            {% endif %}
+
+          </ul>
+      </nav>
+
+    </div>
+{% endblock %}

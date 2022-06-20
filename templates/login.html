@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h3 class="text-center">Login</h3>
+      <div class="container">
+        <div class="offset-md-3 col-md-6">
+
+          <form method="POST"> {% csrf_token %}
+            {{ form.as_p }}<br>
+            <input type="submit" value="Login" class=" btn btn-outline-success">
+            <input type="reset" value="Clear" class=" btn btn-outline-danger">
+          </form>
+        </div>
+        <div class="container">
+          <div class="row">
+            <div class="col-md-6">
+              <a href="{% url 'register' %}" class="btn btn-outline-success">New Registration</a>
+
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

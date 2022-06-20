@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="container-fluid">
+      <div class="row">
+
+        <div class="offset-md-1 col-md-10" style="margin-top:20px;">
+          <div class="img-thumbnail">
+            <a href="#"><h3 class="text-center">{{post.title|capfirst}}</h3></a><small style="float:right">{{post.created}}</small>
+            <br>
+            Post Created By: <b>{{post.author|capfirst}}</b><br><hr>
+            <p>{{post.body|capfirst}}</p>
+
+            <form  action="{% url 'like_post' %}" method="POST"> {% csrf_token %}
+              {% if is_liked %}
+              <button type="submit" name="post_id" value="{{ post.id }}" class="btn btn-danger">Liked</button>
+              {% else %}
+              <button type="submit" name="post_id" value="{{ post.id }}" class="btn btn-primary">Like</button>
+              {% endif %}
+            </form>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+{% endblock %}

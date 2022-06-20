@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+
+  <h5 class="text-center"><u>Post Form</u></h5>
+  <div class="container">
+    <div class="offset-md-4  col-md-4">
+      <form  method="POST"> {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Submit" class=" btn btn-success">
+        <input type="reset" value="Clear" class=" btn btn-danger">
+
+      </form>
+    </div>
+
+
+  </div>
+
+
+
+{% endblock %}
